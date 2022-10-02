@@ -1,0 +1,97 @@
+/*
+This program calculates the average and displays each temperature of the celsius degrees into the Fahrenheit degrees using functions in a 1D array 
+it also takes the average of the celsius and will calculate it into kelvins using another function signature
+Created by Ana Marcela Espinosa 
+Student Number C20306516
+Created on February 18 2021
+*/
+ 
+#include <stdio.h>
+ 
+#define CEL 5
+ 
+// Functions signatures of convert_temp and in_kelvin
+float convert_temp(float *);
+float in_Kelvin(float);
+ 
+int main()
+{
+   float values[CEL];
+   int i;
+   float average=0;
+   float kelvin = 0;
+ 
+   // ask user to enter 5 degrees in celsius 
+   printf("Please enter %d degrees in celsius:\n", CEL);
+ 
+   //Enter the temperature into the array
+   for(i = 0; i < CEL; i++)
+   {
+       scanf("%f", & values[i]); 
+ 
+   } // end for
+ 
+   // Calculate the average of the degrees in celsius 
+    average= convert_temp(values);
+
+   //claculate the average from the degrees in celsius now into kelvin
+    kelvin = in_Kelvin(average);
+ 
+   // Display the average of the degrees of the array
+   printf("\nThe average of the array is %.1f\n", average);
+
+   //Display the Klevins of the average of the celsius degrees
+   printf("\nThe convertion to kelvin is: %.1f\n", kelvin);
+ 
+   return 0;
+ 
+} // end main()
+ 
+ 
+/* Function sum_array()will calculate the average of the degrees in celsius 
+*/
+float convert_temp(float *temperature)
+{
+   float total = 0;
+   int i;
+   float convertion=0;
+   float ave=0;
+   
+   
+ 
+   // calculate the average of the array 
+   for(i = 0; i < CEL; i++)
+   {
+       total = total + *(temperature + i);
+       ave = total/CEL;
+ 
+   } // end for average 
+  
+  
+  //calculate the celsius into farenheit
+   for (i =0; i < CEL; i++)
+   { 
+     //calculation for fareheit
+     convertion= (((temperature[i]*9)/5)+32);
+
+     //Display the degrees in celsius and its convertion in fareheit
+     printf("The convertion of %.1f cerlsius is %.1f fareheit\n", *(temperature+i), convertion);
+   }
+  
+   return ave;
+} // end average ()
+
+
+/*
+  Function in_Kelvin will calculate the kelvins of the average calculated in the convert_temp function and will display it in main()
+ */
+float in_Kelvin(float ave)
+{
+  int kelvins=0;
+
+  //Calculation for Kelvins 
+  kelvins = ave + 273;
+
+  return kelvins;
+
+} //end kelvin
